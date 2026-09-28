@@ -1,0 +1,23 @@
+body {
+  font-family: Tahoma;
+  text-align: center;
+  background-color: #f0f0f0;
+}
+.box {
+  background: #003366;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px;
+}
+button {
+  background: #ff6600;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  margin: 5px;
+}
+button:hover {
+  background: #cc5200;
+}
