@@ -1,33 +1,21 @@
 const questions = [
-    { q: "مجموعة تعريف الدالة د(س) = ٥س² − ٣س + ٧ هي:", o: ["ح", "ح − {٠}", "[٠ ، ∞+)"], a: 0, exp: "الدالة كثيرة حدود ومجالها دائماً ح." },
-    // سأضع لك مثالاً واحداً، يمكنك تعبئة بقية الـ ٣٠ سؤالاً بنفس هذا النمط
+    { q: "مجموعة تعريف الدالة د(س) = ٥س² − ٣س + ٧ هي:", o: ["ح", "ح − {٠}", "[٠ ، ∞+)"], a: 0 },
+    { q: "مجموعة تعريف الدالة د(س) = (س + ٤) / (س² − ٩) هي:", o: ["ح − {٣}", "ح − {-٣}", "ح − {٣ ، -٣}"], a: 2 }
 ];
 
-let currentQ = 0;
-function loadQuestion() {
-    const q = questions[currentQ];
-    document.getElementById('question-box').innerText = q.q;
-    const options = document.getElementById('options-box');
-    options.innerHTML = '';
+const qBox = document.getElementById("question-box");
+const oBox = document.getElementById("options-box");
+
+function loadQuestion(index) {
+    const q = questions[index];
+    qBox.innerText = q.q;
+    oBox.innerHTML = "";
     q.o.forEach((opt, i) => {
-        const btn = document.createElement('button');
+        let btn = document.createElement("button");
         btn.innerText = opt;
-        btn.onclick = () => checkAnswer(i);
-        options.appendChild(btn);
+        btn.onclick = () => alert(i === q.a ? "صحيح!" : "خطأ");
+        oBox.appendChild(btn);
     });
-    document.getElementById('progress').style.width = (currentQ / questions.length) * 100 + "%";
 }
 
-function checkAnswer(idx) {
-    const feedback = document.getElementById('feedback');
-    if(idx === questions[currentQ].a) {
-        feedback.innerText = "أحسنت! " + questions[currentQ].exp;
-        feedback.style.color = "green";
-    } else {
-        feedback.innerText = "خطأ! " + questions[currentQ].exp;
-        feedback.style.color = "red";
-    }
-    // انتقل للسؤال التالي بعد ثانيتين
-}
-
-loadQuestion();
+loadQuestion(0);
